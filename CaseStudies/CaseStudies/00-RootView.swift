@@ -23,6 +23,22 @@ struct ContentView: View {
                             CounterView(store: store)
                         })
                     }
+                    
+                    NavigationLink("Alert & Confirmation Dialog") {
+                        Demo(store: Store(initialState: AlertAndConfirmationDialog.State()) {
+                            AlertAndConfirmationDialog()
+                        }, content: { store in
+                            AlertAndConfirmationDialogView(store: store)
+                        })
+                    }
+                    
+                    NavigationLink("Optional State") {
+                        Demo(store: Store(initialState: OptionalState.State()) {
+                            OptionalState()
+                        }, content: { store in
+                            OptionalStateView(store: store)
+                        })
+                    }
                 } header: {
                     Text("Getting Started")
                 }

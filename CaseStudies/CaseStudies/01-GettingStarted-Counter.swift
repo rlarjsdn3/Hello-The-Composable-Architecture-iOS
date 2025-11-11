@@ -51,17 +51,14 @@ struct CounterView: View {
     let store: StoreOf<Counter>
     
     var body: some View {
-        Form {
-            Section {
-                Text("\(store.count)")
-                    .monospacedDigit()
-                
+        VStack {
+            HStack {
                 Button {
                     store.send(.decrementButtonTapped)
                 } label: {
                     Image(systemName: "minus")
                 }
-                
+                Text("\(store.count)")
                 Button {
                     store.send(.incrementButtonTapped)
                 } label: {
@@ -69,14 +66,12 @@ struct CounterView: View {
                 }
             }
             
-            Section {
-                Button("Random Numbers") {
-                    store.send(.randomNumbersButtonTapped)
-                }
-                
-                if let fact = store.numberFact {
-                    Text(fact)
-                }
+            Button("Random Numbers") {
+                store.send(.randomNumbersButtonTapped)
+            }
+            
+            if let fact = store.numberFact {
+                Text(fact)
             }
         }
     }
